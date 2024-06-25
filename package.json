@@ -1,0 +1,19 @@
+{
+  "name": "playwright-nopcommerce",
+  "version": "1.0.0",
+  "description": "Testing a nopcommerce demo website",
+  "main": "index.js",
+  "scripts": {
+    "playwright:open": "cross-env ENV=qa npx playwright test --ui"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "@faker-js/faker": "^8.4.1",
+    "@playwright/test": "^1.45.0",
+    "@types/node": "^20.14.8",
+    "cross-env": "^7.0.3",
+    "dotenv": "^16.4.5"
+  }
+}
