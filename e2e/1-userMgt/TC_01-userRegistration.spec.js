@@ -1,6 +1,6 @@
 import { test, expect } from "@playwright/test";
-import { Environment } from "../utils/environsUtils";
-import { UserRegistrationPage } from "../pages/userRegistrationPage";
+import { Environment } from "../../utils/env/environsUtils";
+import { UserRegistrationPage } from "../../pages/userRegistrationPage";
 import { faker } from "@faker-js/faker";
 const email = faker.internet.email();
 const firstname = faker.person.firstName();

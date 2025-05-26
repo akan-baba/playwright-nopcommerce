@@ -9,7 +9,9 @@
     "playwright:run:qa": "cross-env ENV=qa npx playwright test",
     "playwright:run:staging": "cross-env ENV=staging npx playwright test",
     "playwright:run:production": "cross-env ENV=production npx playwright test",
-    "test:all": "npm run playwright:run:qa && npm run playwright:run:staging && npm run playwright:run:production"
+    "test:all": "npm run playwright:run:qa && npm run playwright:run:staging && npm run playwright:run:production",
+    "playwright:run:chrome": "cross-env ENV=qa npx playwright test --project=chromium",
+    "playwright:run:firefox": "cross-env ENV=qa npx playwright test --project=firefox"
   },
   "keywords": [],
   "author": "",
