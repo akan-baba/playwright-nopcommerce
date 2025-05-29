@@ -1,28 +1,34 @@
 trigger:
-- main
+  - main
 
 pool:
-  name: Default  # Name of your self-hosted agent pool
+  vmImage: 'ubuntu-latest'
+
+variables:
+  NODE_VERSION: '18.x'
 
 steps:
-- task: NodeTool@0
-  inputs:
-    versionSpec: '18.x'  # Adjust to your agent's Node.js version
-  displayName: 'Install Node.js'
+  - task: NodeTool@0
+    inputs:
+      versionSpec: '$(NODE_VERSION)'
+    displayName: 'Install Node.js'
 
-- script: npm install
-  displayName: 'Install dependencies'
+  - script: |
+      npm install
+    displayName: 'Install dependencies'
 
-- script: npx playwright install --with-deps
-  displayName: 'Install Playwright browsers'
+  - script: |
+      npx playwright install --with-deps
+    displayName: 'Install Playwright Browsers'
 
-- script: npx playwright test
-  displayName: 'Run Playwright tests'
+  - script: |
+      npm run playwright:run
+    displayName: 'Run Playwright Tests'
 
-- task: PublishTestResults@2
-  condition: succeededOrFailed()
-  inputs:
-    testResultsFormat: 'JUnit'
-    testResultsFiles: '**/test-results/*.xml'
-    failTaskOnFailedTests: true
-  displayName: 'Publish Test Results'
+  - task: PublishTestResults@2
+    condition: succeededOrFailed()
+    inputs:
+      testResultsFiles: '**/test-results/**/*.xml'
+      testRunTitle: 'Playwright Test Results'
+    displayName: 'Publish Test Results'
+
