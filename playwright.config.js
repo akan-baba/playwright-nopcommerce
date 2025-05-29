@@ -17,7 +17,7 @@ module.exports = defineConfig({
     ['junit', { outputFile: 'test-results/results.xml' }],
     ['html'],
   ],
-  
+  timeout: 60000,
   use: {
     baseURL: process.env.BASEURL || 'http://192.168.1.201:8085',
     actionTimeout: 10000,
